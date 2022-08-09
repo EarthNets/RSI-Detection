@@ -41,6 +41,9 @@ English | [简体中文](README_zh-CN.md)
 
 </div>
 
+## Requirements
+mim install mmcv-full==1.6.0
+
 ## Introduction
 
 MMDetection is an open source object detection toolbox based on PyTorch. It is
