@@ -1,59 +1,18 @@
-<div align="center">
-  <img src="resources/rsidet-logo.png" width="600"/>
-  <div>&nbsp;</div>
-  <div align="center">
-    <b><font size="5">OpenMMLab website</font></b>
-    <sup>
-      <a href="https://openmmlab.com">
-        <i><font size="4">HOT</font></i>
-      </a>
-    </sup>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <b><font size="5">OpenMMLab platform</font></b>
-    <sup>
-      <a href="https://platform.openmmlab.com">
-        <i><font size="4">TRY IT OUT</font></i>
-      </a>
-    </sup>
-  </div>
-  <div>&nbsp;</div>
-
-[![PyPI](https://img.shields.io/pypi/v/rsidet)](https://pypi.org/project/rsidet)
-[![docs](https://img.shields.io/badge/docs-latest-blue)](https://rsidetection.readthedocs.io/en/latest/)
-[![badge](https://github.com/open-mmlab/rsidetection/workflows/build/badge.svg)](https://github.com/open-mmlab/rsidetection/actions)
-[![codecov](https://codecov.io/gh/open-mmlab/rsidetection/branch/master/graph/badge.svg)](https://codecov.io/gh/open-mmlab/rsidetection)
-[![license](https://img.shields.io/github/license/open-mmlab/rsidetection.svg)](https://github.com/open-mmlab/rsidetection/blob/master/LICENSE)
-[![open issues](https://isitmaintained.com/badge/open/open-mmlab/rsidetection.svg)](https://github.com/open-mmlab/rsidetection/issues)
-[![issue resolution](https://isitmaintained.com/badge/resolution/open-mmlab/rsidetection.svg)](https://github.com/open-mmlab/rsidetection/issues)
-
-[📘Documentation](https://rsidetection.readthedocs.io/en/stable/) |
-[🛠️Installation](https://rsidetection.readthedocs.io/en/stable/get_started.html) |
-[👀Model Zoo](https://rsidetection.readthedocs.io/en/stable/model_zoo.html) |
-[🆕Update News](https://rsidetection.readthedocs.io/en/stable/changelog.html) |
-[🚀Ongoing Projects](https://github.com/open-mmlab/rsidetection/projects) |
-[🤔Reporting Issues](https://github.com/open-mmlab/rsidetection/issues/new/choose)
-
-</div>
-
-<div align="center">
-
-English | [简体中文](README_zh-CN.md)
-
-</div>
 
 ## Requirements
 mim install mmcv-full==1.6.0
 
 ## Introduction
 
-MMDetection is an open source object detection toolbox based on PyTorch. It is
-a part of the [OpenMMLab](https://openmmlab.com/) project.
+RSI-Detection is an open source object detection toolbox based on PyTorch for Remote Sensing datasets. It is
+a part of the [EarthNets](https://github.com/EarthNets) project.
 
 The master branch works with **PyTorch 1.5+**.
 
 <img src="https://user-images.githubusercontent.com/12907710/137271636-56ba1cd2-b110-4812-8221-b4c120320aa9.png"/>
 
 <details open>
+Thanks to [MMDetection](https://github.com/open-mmlab), this project enjoy the follwoing features:
 <summary>Major features</summary>
 
 - **Modular Design**
