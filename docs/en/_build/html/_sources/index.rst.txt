@@ -6,8 +6,21 @@ Welcome to RSI-Detection's documentation!
    :caption: Get Started
 
    get_started.md
-   modelzoo_statistics.md
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Dataset Preparation
+
+   dataset_prepare.md
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Model Zoo
+
    model_zoo.md
+   modelzoo_statistics.md
 
 .. toctree::
    :maxdepth: 2
