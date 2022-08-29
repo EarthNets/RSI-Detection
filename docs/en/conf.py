@@ -20,9 +20,9 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'MMDetection'
-copyright = '2018-2021, OpenMMLab'
-author = 'MMDetection Authors'
+project = 'RSI-Detection'
+copyright = '2022, EarthNets'
+author = 'RSI-Detection Authors'
 version_file = '../../rsidet/version.py'
 
 
@@ -84,11 +84,31 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'pytorch_sphinx_theme'
 html_theme_path = [pytorch_sphinx_theme.get_html_theme_path()]
 
+html_logo= 'https://rsi-detection.readthedocs.io/en/latest/'
 html_theme_options = {
+    'logo_url':
+    'https://rsi-detection.readthedocs.io/en/latest/',
     'menu': [
         {
+            'name': 'Tutorial',
+            'url':
+            'https://github.com/EarthNets/RSI-Detection/blob/main/'
+            'demo/rsi_detection_tutorial.ipynb'
+        },
+        {
             'name': 'GitHub',
-            'url': 'https://github.com/open-mmlab/rsidetection'
+            'url': 'https://github.com/EarthNets/RSI-Detection'
+        },
+        {
+            'name':
+            'About',
+            'children': [
+                {
+                    'name': 'MMCV',
+                    'url': 'https://github.com/open-mmlab/mmcv',
+                    'description': 'Foundational library for computer vision'
+                },
+            ]
         },
     ],
     # Specify the language of shared menu

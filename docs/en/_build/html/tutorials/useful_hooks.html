@@ -1,0 +1,579 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 13: Useful Hooks &mdash; RSI-Detection 2.25.1 documentation</title>
+  
+
+  <link rel="shortcut icon" href="../_static/images/favicon.ico" />
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/readthedocs.css" type="text/css" />
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Log Analysis" href="../useful_tools.html" />
+  <link rel="prev" title="Tutorial 12: Test Results Submission" href="test_results_submission.html" />
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    var collapsedSections = [];
+  </script>
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+  <script>
+    MathJax = {
+        chtml: {
+            scale: 1,
+            minScale: 1,
+        },
+        svg: {
+            scale: 1,
+            minScale: 1,
+        }
+    }
+</script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://rsi-detection.readthedocs.io/en/latest/"
+        aria-label="OpenMMLab"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection/blob/main/demo/rsi_detection_tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection" target="_blank">GitHub</a>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                About
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/open-mmlab/mmcv" target="_blank">
+                  <span class="dropdown-title">MMCV </span>
+                  <p>Foundational library for computer vision</p>
+                </a>
+              </div>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                EarthNets
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/Dataset4EO" target="_blank">
+                  <span class="dropdown-title">Dataset4EO </span>
+                  <p>Re-organize remote sensing datasets.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Classification" target="_blank">
+                  <span class="dropdown-title">RSI-Classification </span>
+                  <p>Image/scene classification for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">
+                  <span class="dropdown-title">RSI-Segmentation </span>
+                  <p>Pixel-wise semantic segmentation for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Detection" target="_blank">
+                  <span class="dropdown-title">RSI-Detection </span>
+                  <p>Object detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-ChangeDetection" target="_blank">
+                  <span class="dropdown-title">RSI-ChangeDetection </span>
+                  <p>Change detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-SelfSupervised" target="_blank">
+                  <span class="dropdown-title">RSI-SelfSupervised </span>
+                  <p>Self-supervised learning for RS images.</p>
+                </a>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+  
+
+  <div class="table-of-contents-link-wrapper">
+    <span>Table of Contents</span>
+    <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+  </div>
+
+  <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+    <div class="pytorch-side-scroll">
+      <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <div class="pytorch-left-menu-search">
+          
+
+          
+          
+          
+          
+
+          
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        
+        
+        
+        
+        
+        <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo.html">Benchmark and Model Zoo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick Run</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_exist_data_model.html">1: Inference and train with existing models and standard datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_new_data_model.html">2: Train with customized datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_exist_data_new_model.html">3: Train with customized models and standard datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="config.html">Tutorial 1: Learn about Configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_dataset.html">Tutorial 2: Customize Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_pipeline.html">Tutorial 3: Customize Data Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_models.html">Tutorial 4: Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_runtime.html">Tutorial 5: Customize Runtime Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_losses.html">Tutorial 6: Customize Losses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="finetune.html">Tutorial 7: Finetuning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pytorch2onnx.html">Tutorial 8: Pytorch to ONNX (Experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onnx2tensorrt.html">Tutorial 9: ONNX to TensorRT (Experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="init_cfg.html">Tutorial 10: Weight initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to.html">Tutorial 11: How to xxx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_results_submission.html">Tutorial 12: Test Results Submission</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial 13: Useful Hooks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful Tools and Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html">Log Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#result-analysis">Result Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#visualization">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#error-analysis">Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#model-serving">Model Serving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#model-complexity">Model Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#model-conversion">Model conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#dataset-conversion">Dataset Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#dataset-download">Dataset Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#benchmark">Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#hyper-parameter-optimization">Hyper-parameter Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useful_tools.html#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compatibility.html">Compatibility of MMDetection 2.x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects.html">Projects based on MMDetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="pytorch-container">
+    <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+      <div class="pytorch-breadcrumbs-wrapper">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+            Docs
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">&lt;no title&gt;</a> &gt;</li>
+        
+      <li>Tutorial 13: Useful Hooks</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/useful_hooks.md.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+      </div>
+
+      <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+        Shortcuts
+      </div>
+    </div>
+
+    <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+      <div class="pytorch-content-left">
+        
+          <div class="rst-content">
+            
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+                
+  <section id="tutorial-13-useful-hooks">
+<h1>Tutorial 13: Useful Hooks<a class="headerlink" href="#tutorial-13-useful-hooks" title="Permalink to this heading">¶</a></h1>
+<p>MMDetection and MMCV provide users with various useful hooks including log hooks, evaluation hooks, NumClassCheckHook, etc. This tutorial introduces the functionalities and usages of hooks implemented in MMDetection. For using hooks in MMCV, please read the <a class="reference external" href="https://github.com/open-mmlab/mmcv/blob/master/docs/en/understand_mmcv/runner.md">API documentation in MMCV</a>.</p>
+<section id="checkinvalidlosshook">
+<h2>CheckInvalidLossHook<a class="headerlink" href="#checkinvalidlosshook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="evalhook-and-distevalhook">
+<h2>EvalHook and DistEvalHook<a class="headerlink" href="#evalhook-and-distevalhook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="expmomentumemahook-and-linearmomentumemahook">
+<h2>ExpMomentumEMAHook and LinearMomentumEMAHook<a class="headerlink" href="#expmomentumemahook-and-linearmomentumemahook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="numclasscheckhook">
+<h2>NumClassCheckHook<a class="headerlink" href="#numclasscheckhook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="memoryprofilerhook">
+<h2><a class="reference external" href="https://github.com/open-mmlab/rsidetection/blob/master/rsidet/core/hook/memory_profiler_hook.py">MemoryProfilerHook</a><a class="headerlink" href="#memoryprofilerhook" title="Permalink to this heading">¶</a></h2>
+<p>Memory profiler hook records memory information including virtual memory, swap memory, and the memory of the current process. This hook helps grasp the memory usage of the system and discover potential memory leak bugs. To use this hook, users should install <code class="docutils literal notranslate"><span class="pre">memory_profiler</span></code> and <code class="docutils literal notranslate"><span class="pre">psutil</span></code> by <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">memory_profiler</span> <span class="pre">psutil</span></code> first.</p>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h3>
+<p>To use this hook, users should add the following code to the config file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">custom_hooks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;MemoryProfilerHook&#39;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="result">
+<h3>Result<a class="headerlink" href="#result" title="Permalink to this heading">¶</a></h3>
+<p>During training, you can see the messages in the log recorded by <code class="docutils literal notranslate"><span class="pre">MemoryProfilerHook</span></code> as below. The system has 250 GB (246360 MB + 9407 MB) of memory and 8 GB (5740 MB + 2452 MB) of swap memory in total. Currently 9407 MB (4.4%) of memory and 5740 MB (29.9%) of swap memory were consumed. And the current training process consumed 5434 MB of memory.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2022-04-21 08:49:56,881 - rsidet - INFO - Memory information available_memory: 246360 MB, used_memory: 9407 MB, memory_utilization: 4.4 %, available_swap_memory: 5740 MB, used_swap_memory: 2452 MB, swap_memory_utilization: 29.9 %, current_process_memory: 5434 MB
+</pre></div>
+</div>
+</section>
+</section>
+<section id="setepochinfohook">
+<h2>SetEpochInfoHook<a class="headerlink" href="#setepochinfohook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="syncnormhook">
+<h2>SyncNormHook<a class="headerlink" href="#syncnormhook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="syncrandomsizehook">
+<h2>SyncRandomSizeHook<a class="headerlink" href="#syncrandomsizehook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="yoloxlrupdaterhook">
+<h2>YOLOXLrUpdaterHook<a class="headerlink" href="#yoloxlrupdaterhook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="yoloxmodeswitchhook">
+<h2>YOLOXModeSwitchHook<a class="headerlink" href="#yoloxmodeswitchhook" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="how-to-implement-a-custom-hook">
+<h2>How to implement a custom hook<a class="headerlink" href="#how-to-implement-a-custom-hook" title="Permalink to this heading">¶</a></h2>
+<p>In general, there are 10 points where hooks can be inserted from the beginning to the end of model training. The users can implement custom hooks and insert them at different points in the process of training to do what they want.</p>
+<ul class="simple">
+<li><p>global points: <code class="docutils literal notranslate"><span class="pre">before_run</span></code>, <code class="docutils literal notranslate"><span class="pre">after_run</span></code></p></li>
+<li><p>points in training: <code class="docutils literal notranslate"><span class="pre">before_train_epoch</span></code>, <code class="docutils literal notranslate"><span class="pre">before_train_iter</span></code>, <code class="docutils literal notranslate"><span class="pre">after_train_iter</span></code>, <code class="docutils literal notranslate"><span class="pre">after_train_epoch</span></code></p></li>
+<li><p>points in validation: <code class="docutils literal notranslate"><span class="pre">before_val_epoch</span></code>, <code class="docutils literal notranslate"><span class="pre">before_val_iter</span></code>, <code class="docutils literal notranslate"><span class="pre">after_val_iter</span></code>, <code class="docutils literal notranslate"><span class="pre">after_val_epoch</span></code></p></li>
+</ul>
+<p>For example, users can implement a hook to check loss and terminate training when loss goes NaN. To achieve that, there are three steps to go:</p>
+<ol class="arabic simple">
+<li><p>Implement a new hook that inherits the <code class="docutils literal notranslate"><span class="pre">Hook</span></code> class in MMCV, and implement <code class="docutils literal notranslate"><span class="pre">after_train_iter</span></code> method which checks whether loss goes NaN after every <code class="docutils literal notranslate"><span class="pre">n</span></code> training iterations.</p></li>
+<li><p>The implemented hook should be registered in <code class="docutils literal notranslate"><span class="pre">HOOKS</span></code> by <code class="docutils literal notranslate"><span class="pre">&#64;HOOKS.register_module()</span></code> as shown in the code below.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">custom_hooks</span> <span class="pre">=</span> <span class="pre">[dict(type='CheckInvalidLossHook',</span> <span class="pre">interval=50)]</span></code> in the config file.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">mmcv.runner.hooks</span> <span class="kn">import</span> <span class="n">HOOKS</span><span class="p">,</span> <span class="n">Hook</span>
+
+
+<span class="nd">@HOOKS.register_module</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">CheckInvalidLossHook</span><span class="p">(</span><span class="n">Hook</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check invalid loss hook.</span>
+<span class="sd">    This hook will regularly check whether the loss is valid</span>
+<span class="sd">    during training.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        interval (int): Checking interval (every k iterations).</span>
+<span class="sd">            Default: 50.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span>
+
+    <span class="k">def</span> <span class="nf">after_train_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runner</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">every_n_iters</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="n">torch</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]),</span> \
+                <span class="n">runner</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loss become infinite or NaN!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Please read <a class="reference external" href="https://rsidetection.readthedocs.io/en/latest/tutorials/customize_runtime.html#customize-self-implemented-hooks">customize_runtime</a> for more about implementing a custom hook.</p>
+</section>
+</section>
+
+
+              </article>
+              
+            </div>
+            <footer>
+  
+  <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+    
+    <a href="../useful_tools.html" class="btn btn-neutral float-right" title="Log Analysis" accesskey="n"
+      rel="next">Next <img src="../_static/images/chevron-right-blue.svg"
+        class="next-page"></a>
+    
+    
+    <a href="test_results_submission.html" class="btn btn-neutral" title="Tutorial 12: Test Results Submission" accesskey="p"
+      rel="prev"><img src="../_static/images/chevron-right-blue.svg" class="previous-page"> Previous</a>
+    
+  </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+      &copy; Copyright 2022, EarthNets.
+
+    </p>
+  </div>
+  
+  <div>
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+      href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the
+      Docs</a>.
+  </div>
+   
+
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Tutorial 13: Useful Hooks</a><ul>
+<li><a class="reference internal" href="#checkinvalidlosshook">CheckInvalidLossHook</a></li>
+<li><a class="reference internal" href="#evalhook-and-distevalhook">EvalHook and DistEvalHook</a></li>
+<li><a class="reference internal" href="#expmomentumemahook-and-linearmomentumemahook">ExpMomentumEMAHook and LinearMomentumEMAHook</a></li>
+<li><a class="reference internal" href="#numclasscheckhook">NumClassCheckHook</a></li>
+<li><a class="reference internal" href="#memoryprofilerhook">MemoryProfilerHook</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#result">Result</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setepochinfohook">SetEpochInfoHook</a></li>
+<li><a class="reference internal" href="#syncnormhook">SyncNormHook</a></li>
+<li><a class="reference internal" href="#syncrandomsizehook">SyncRandomSizeHook</a></li>
+<li><a class="reference internal" href="#yoloxlrupdaterhook">YOLOXLrUpdaterHook</a></li>
+<li><a class="reference internal" href="#yoloxmodeswitchhook">YOLOXModeSwitchHook</a></li>
+<li><a class="reference internal" href="#how-to-implement-a-custom-hook">How to implement a custom hook</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" id="documentation_options" data-url_root="../"
+    src="../_static/documentation_options.js"></script>
+  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script src="../_static/jquery.js"></script>
+  <script src="../_static/underscore.js"></script>
+  <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+  <script src="../_static/doctools.js"></script>
+  <script src="../_static/clipboard.min.js"></script>
+  <script src="../_static/copybutton.js"></script>
+  
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+    jQuery(function () {
+      SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+  </div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://rsi-detection.readthedocs.io/en/latest/" aria-label="OpenMMLab"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection/blob/main/demo/rsi_detection_tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection" target="_blank">GitHub</a>
+          </li>
+          <li class="resources-mobile-menu-title" >
+            About
+          </li>
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://github.com/open-mmlab/mmcv" target="_blank">MMCV</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function (e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+
+</html>

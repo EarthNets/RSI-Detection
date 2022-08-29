@@ -1,0 +1,819 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Frequently Asked Questions &mdash; RSI-Detection 2.25.1 documentation</title>
+  
+
+  <link rel="shortcut icon" href="_static/images/favicon.ico" />
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/readthedocs.css" type="text/css" />
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="prev" title="Changelog" href="changelog.html" />
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+    var collapsedSections = [];
+  </script>
+  
+  <!-- End Google Analytics -->
+  
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+  <script>
+    MathJax = {
+        chtml: {
+            scale: 1,
+            minScale: 1,
+        },
+        svg: {
+            scale: 1,
+            minScale: 1,
+        }
+    }
+</script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://rsi-detection.readthedocs.io/en/latest/"
+        aria-label="OpenMMLab"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection/blob/main/demo/rsi_detection_tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection" target="_blank">GitHub</a>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                About
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/open-mmlab/mmcv" target="_blank">
+                  <span class="dropdown-title">MMCV </span>
+                  <p>Foundational library for computer vision</p>
+                </a>
+              </div>
+          </li>
+          <li >
+            <div id="resourcesDropdownButton" data-toggle="resources-dropdown" class="resources-dropdown">
+              <a
+                class="resource-option with-down-arrow">
+                EarthNets
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/Dataset4EO" target="_blank">
+                  <span class="dropdown-title">Dataset4EO </span>
+                  <p>Re-organize remote sensing datasets.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Classification" target="_blank">
+                  <span class="dropdown-title">RSI-Classification </span>
+                  <p>Image/scene classification for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Segmentation" target="_blank">
+                  <span class="dropdown-title">RSI-Segmentation </span>
+                  <p>Pixel-wise semantic segmentation for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-Detection" target="_blank">
+                  <span class="dropdown-title">RSI-Detection </span>
+                  <p>Object detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-ChangeDetection" target="_blank">
+                  <span class="dropdown-title">RSI-ChangeDetection </span>
+                  <p>Change detection for RS images.</p>
+                </a>
+                <a class="doc-dropdown-option nav-dropdown-item"
+                  href="https://github.com/EarthNets/RSI-SelfSupervised" target="_blank">
+                  <span class="dropdown-title">RSI-SelfSupervised </span>
+                  <p>Self-supervised learning for RS images.</p>
+                </a>
+              </div>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+  
+
+  <div class="table-of-contents-link-wrapper">
+    <span>Table of Contents</span>
+    <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+  </div>
+
+  <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+    <div class="pytorch-side-scroll">
+      <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <div class="pytorch-left-menu-search">
+          
+
+          
+          
+          
+          
+
+          
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        
+        
+        
+        
+        
+        <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_zoo.html">Benchmark and Model Zoo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick Run</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_exist_data_model.html">1: Inference and train with existing models and standard datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_new_data_model.html">2: Train with customized datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_exist_data_new_model.html">3: Train with customized models and standard datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/config.html">Tutorial 1: Learn about Configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_dataset.html">Tutorial 2: Customize Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/data_pipeline.html">Tutorial 3: Customize Data Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_models.html">Tutorial 4: Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_runtime.html">Tutorial 5: Customize Runtime Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/customize_losses.html">Tutorial 6: Customize Losses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/finetune.html">Tutorial 7: Finetuning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/pytorch2onnx.html">Tutorial 8: Pytorch to ONNX (Experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/onnx2tensorrt.html">Tutorial 9: ONNX to TensorRT (Experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/init_cfg.html">Tutorial 10: Weight initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/how_to.html">Tutorial 11: How to xxx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/test_results_submission.html">Tutorial 12: Test Results Submission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/useful_hooks.html">Tutorial 13: Useful Hooks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful Tools and Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html">Log Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#result-analysis">Result Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#visualization">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#error-analysis">Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#model-serving">Model Serving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#model-complexity">Model Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#model-conversion">Model conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#dataset-conversion">Dataset Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#dataset-download">Dataset Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#benchmark">Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#hyper-parameter-optimization">Hyper-parameter Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_tools.html#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compatibility.html">Compatibility of MMDetection 2.x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects based on MMDetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a></li>
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="pytorch-container">
+    <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+      <div class="pytorch-breadcrumbs-wrapper">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+            Docs
+        </a> &gt;
+      </li>
+
+        
+      <li>Frequently Asked Questions</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="_sources/faq.md.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+      </div>
+
+      <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+        Shortcuts
+      </div>
+    </div>
+
+    <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+      <div class="pytorch-content-left">
+        
+          <div class="rst-content">
+            
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+                
+  <section id="frequently-asked-questions">
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this heading">¶</a></h1>
+<p>We list some common troubles faced by many users and their corresponding solutions here. Feel free to enrich the list if you find any frequent issues and have ways to help others to solve them. If the contents here do not cover your issue, please create an issue using the <a class="reference external" href="https://github.com/open-mmlab/rsidetection/blob/master/.github/ISSUE_TEMPLATE/error-report.md/">provided templates</a> and make sure you fill in all required information in the template.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Compatibility issue between MMCV and MMDetection; “ConvWS is already registered in conv layer”; “AssertionError: MMCV==xxx is used but incompatible. Please install mmcv&gt;=xxx, &lt;=xxx.”</p>
+<p>Compatible MMDetection and MMCV versions are shown as below. Please choose the correct version of MMCV to avoid installation issues.</p>
+</li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th style="text-align: center;">MMDetection version</th>
+<th style="text-align: center;">MMCV version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">master</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.6.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.25.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.6.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.25.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.6.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.24.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.6.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.24.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.6.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.23.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.5.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.22.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.5.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.21.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.5.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.20.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.5.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.19.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.5.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.19.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.5.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.18.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.17, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.17.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.14, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.16.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.8, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.15.1</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.8, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.15.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.8, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.14.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.8, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.13.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.3, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.12.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.3.3, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.11.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.2.4, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.10.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.2.4, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.9.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.2.4, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.8.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.2.4, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.7.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.5, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.6.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.5, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.5.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.5, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.4.0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.1.1, \&lt;1.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.3.0</td>
+<td style="text-align: center;">mmcv-full==1.0.5</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.3.0rc0</td>
+<td style="text-align: center;">mmcv-full&gt;=1.0.2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.2.1</td>
+<td style="text-align: center;">mmcv==0.6.2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.2.0</td>
+<td style="text-align: center;">mmcv==0.6.2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.1.0</td>
+<td style="text-align: center;">mmcv&gt;=0.5.9, \&lt;=0.6.1</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.0.0</td>
+<td style="text-align: center;">mmcv&gt;=0.5.1, \&lt;=0.5.8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>“No module named ‘mmcv.ops’”; “No module named ‘mmcv._ext’”.</p>
+<ol class="arabic simple">
+<li><p>Uninstall existing mmcv in the environment using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">mmcv</span></code>.</p></li>
+<li><p>Install mmcv-full following the <span class="xref myst">installation instruction</span>.</p></li>
+</ol>
+</li>
+<li><p>Using albumentations</p>
+<p>If you would like to use <code class="docutils literal notranslate"><span class="pre">albumentations</span></code>, we suggest using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements/albu.txt</span></code> or
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">albumentations</span> <span class="pre">--no-binary</span> <span class="pre">qudida,albumentations</span></code>.
+If you simply use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">albumentations&gt;=0.3.2</span></code>, it will install <code class="docutils literal notranslate"><span class="pre">opencv-python-headless</span></code> simultaneously (even though you have already installed <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code>).
+Please refer to the <a class="reference external" href="https://albumentations.ai/docs/getting_started/installation/#note-on-opencv-dependencies">official documentation</a> for details.</p>
+</li>
+<li><p>ModuleNotFoundError is raised when using some algorithms</p>
+<p>Some extra dependencies are required for Instaboost, Panoptic Segmentation, LVIS dataset, etc. Please note the error message and install corresponding packages, e.g.,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># for instaboost</span>
+pip install instaboostfast
+<span class="c1"># for panoptic segmentation</span>
+pip install git+https://github.com/cocodataset/panopticapi.git
+<span class="c1"># for LVIS dataset</span>
+pip install git+https://github.com/lvis-dataset/lvis-api.git
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Do I need to reinstall rsidet after some code modifications</p>
+<p>If you follow the best practice and install rsidet with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>, any local modifications made to the code will take effect without reinstallation.</p>
+</li>
+<li><p>How to develop with multiple MMDetection versions</p>
+<p>You can have multiple folders like rsidet-2.21, rsidet-2.22.
+When you run the train or test script, it will adopt the rsidet package in the current folder.</p>
+<p>To use the default MMDetection installed in the environment rather than the one you are working with, you can remove the following line in those scripts:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="nv">$0</span><span class="k">)</span><span class="s2">/..&quot;</span>:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="pytorch-cuda-environment">
+<h2>PyTorch/CUDA Environment<a class="headerlink" href="#pytorch-cuda-environment" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>“RTX 30 series card fails when building MMCV or MMDet”</p>
+<ol class="arabic simple">
+<li><p>Temporary work-around: do <code class="docutils literal notranslate"><span class="pre">MMCV_WITH_OPS=1</span> <span class="pre">MMCV_CUDA_ARGS='-gencode=arch=compute_80,code=sm_80'</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>.
+The common issue is <code class="docutils literal notranslate"><span class="pre">nvcc</span> <span class="pre">fatal</span> <span class="pre">:</span> <span class="pre">Unsupported</span> <span class="pre">gpu</span> <span class="pre">architecture</span> <span class="pre">'compute_86'</span></code>. This means that the compiler should optimize for sm_86, i.e., nvidia 30 series card, but such optimizations have not been supported by CUDA toolkit 11.0.
+This work-around modifies the compile flag by adding <code class="docutils literal notranslate"><span class="pre">MMCV_CUDA_ARGS='-gencode=arch=compute_80,code=sm_80'</span></code>, which tells <code class="docutils literal notranslate"><span class="pre">nvcc</span></code> to optimize for <strong>sm_80</strong>, i.e., Nvidia A100. Although A100 is different from the 30 series card, they use similar ampere architecture. This may hurt the performance but it works.</p></li>
+<li><p>PyTorch developers have updated that the default compiler flags should be fixed by <a class="reference external" href="https://github.com/pytorch/pytorch/pull/47585">pytorch/pytorch#47585</a>. So using PyTorch-nightly may also be able to solve the problem, though we have not tested it yet.</p></li>
+</ol>
+</li>
+<li><p>“invalid device function” or “no kernel image is available for execution”.</p>
+<ol class="arabic simple">
+<li><p>Check if your cuda runtime version (under <code class="docutils literal notranslate"><span class="pre">/usr/local/</span></code>), <code class="docutils literal notranslate"><span class="pre">nvcc</span> <span class="pre">--version</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span> <span class="pre">cudatoolkit</span></code> version match.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">rsidet/utils/collect_env.py</span></code> to check whether PyTorch, torchvision, and MMCV are built for the correct GPU architecture.
+You may need to set <code class="docutils literal notranslate"><span class="pre">TORCH_CUDA_ARCH_LIST</span></code> to reinstall MMCV.
+The GPU arch table could be found <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#gpu-feature-list">here</a>,
+i.e. run <code class="docutils literal notranslate"><span class="pre">TORCH_CUDA_ARCH_LIST=7.0</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mmcv-full</span></code> to build MMCV for Volta GPUs.
+The compatibility issue could happen when using old GPUS, e.g., Tesla K80 (3.7) on colab.</p></li>
+<li><p>Check whether the running environment is the same as that when mmcv/rsidet has compiled.
+For example, you may compile mmcv using CUDA 10.0 but run it on CUDA 9.0 environments.</p></li>
+</ol>
+</li>
+<li><p>“undefined symbol” or “cannot open xxx.so”.</p>
+<ol class="arabic simple">
+<li><p>If those symbols are CUDA/C++ symbols (e.g., libcudart.so or GLIBCXX), check whether the CUDA/GCC runtimes are the same as those used for compiling mmcv,
+i.e. run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">rsidet/utils/collect_env.py</span></code> to see if <code class="docutils literal notranslate"><span class="pre">&quot;MMCV</span> <span class="pre">Compiler&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;MMCV</span> <span class="pre">CUDA</span> <span class="pre">Compiler&quot;</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">&quot;GCC&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;CUDA_HOME&quot;</span></code>.</p></li>
+<li><p>If those symbols are PyTorch symbols (e.g., symbols containing caffe, aten, and TH), check whether the PyTorch version is the same as that used for compiling mmcv.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">rsidet/utils/collect_env.py</span></code> to check whether PyTorch, torchvision, and MMCV are built by and running on the same environment.</p></li>
+</ol>
+</li>
+<li><p>setuptools.sandbox.UnpickleableException: DistutilsSetupError(“each element of ‘ext_modules’ option must be an Extension instance or 2-tuple”)</p>
+<ol class="arabic simple">
+<li><p>If you are using miniconda rather than anaconda, check whether Cython is installed as indicated in <a class="reference external" href="https://github.com/open-mmlab/rsidetection/issues/3379">#3379</a>.
+You need to manually install Cython first and then run command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>.</p></li>
+<li><p>You may also need to check the compatibility between the <code class="docutils literal notranslate"><span class="pre">setuptools</span></code>, <code class="docutils literal notranslate"><span class="pre">Cython</span></code>, and <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> in your environment.</p></li>
+</ol>
+</li>
+<li><p>“Segmentation fault”.</p>
+<ol class="arabic">
+<li><p>Check you GCC version and use GCC 5.4. This usually caused by the incompatibility between PyTorch and the environment (e.g., GCC &lt; 4.9 for PyTorch). We also recommend the users to avoid using GCC 5.5 because many feedbacks report that GCC 5.5 will cause “segmentation fault” and simply changing it to GCC 5.4 could solve the problem.</p></li>
+<li><p>Check whether PyTorch is correctly installed and could use CUDA op, e.g. type the following command in your terminal.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -c <span class="s1">&#39;import torch; print(torch.cuda.is_available())&#39;</span>
+</pre></div>
+</div>
+<p>And see whether they could correctly output results.</p>
+</li>
+<li><p>If Pytorch is correctly installed, check whether MMCV is correctly installed.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -c <span class="s1">&#39;import mmcv; import mmcv.ops&#39;</span>
+</pre></div>
+</div>
+<p>If MMCV is correctly installed, then there will be no issue of the above two commands.</p>
+</li>
+<li><p>If MMCV and Pytorch is correctly installed, you man use <code class="docutils literal notranslate"><span class="pre">ipdb</span></code>, <code class="docutils literal notranslate"><span class="pre">pdb</span></code> to set breakpoints or directly add ‘print’ in rsidetection code and see which part leads the segmentation fault.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="training">
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>“Loss goes Nan”</p>
+<ol class="arabic simple">
+<li><p>Check if the dataset annotations are valid: zero-size bounding boxes will cause the regression loss to be Nan due to the commonly used transformation for box regression. Some small size (width or height are smaller than 1) boxes will also cause this problem after data augmentation (e.g., instaboost). So check the data and try to filter out those zero-size boxes and skip some risky augmentations on the small-size boxes when you face the problem.</p></li>
+<li><p>Reduce the learning rate: the learning rate might be too large due to some reasons, e.g., change of batch size. You can rescale them to the value that could stably train the model.</p></li>
+<li><p>Extend the warmup iterations: some models are sensitive to the learning rate at the start of the training. You can extend the warmup iterations, e.g., change the <code class="docutils literal notranslate"><span class="pre">warmup_iters</span></code> from 500 to 1000 or 2000.</p></li>
+<li><p>Add gradient clipping: some models requires gradient clipping to stabilize the training process. The default of <code class="docutils literal notranslate"><span class="pre">grad_clip</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, you can add gradient clippint to avoid gradients that are too large, i.e., set <code class="docutils literal notranslate"><span class="pre">optimizer_config=dict(_delete_=True,</span> <span class="pre">grad_clip=dict(max_norm=35,</span> <span class="pre">norm_type=2))</span></code> in your config file. If your config does not inherits from any basic config that contains <code class="docutils literal notranslate"><span class="pre">optimizer_config=dict(grad_clip=None)</span></code>, you can simply add <code class="docutils literal notranslate"><span class="pre">optimizer_config=dict(grad_clip=dict(max_norm=35,</span> <span class="pre">norm_type=2))</span></code>.</p></li>
+</ol>
+</li>
+<li><p>“GPU out of memory”</p>
+<ol class="arabic">
+<li><p>There are some scenarios when there are large amount of ground truth boxes, which may cause OOM during target assignment. You can set <code class="docutils literal notranslate"><span class="pre">gpu_assign_thr=N</span></code> in the config of assigner thus the assigner will calculate box overlaps through CPU when there are more than N GT boxes.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">with_cp=True</span></code> in the backbone. This uses the sublinear strategy in PyTorch to reduce GPU memory cost in the backbone.</p></li>
+<li><p>Try mixed precision training using following the examples in <code class="docutils literal notranslate"><span class="pre">config/fp16</span></code>. The <code class="docutils literal notranslate"><span class="pre">loss_scale</span></code> might need further tuning for different models.</p></li>
+<li><p>Try to use <code class="docutils literal notranslate"><span class="pre">AvoidCUDAOOM</span></code> to avoid GPU out of memory. It will first retry after calling <code class="docutils literal notranslate"><span class="pre">torch.cuda.empty_cache()</span></code>. If it still fails, it will then retry by converting the type of inputs to FP16 format. If it still fails, it will try to copy inputs from GPUs to CPUs to continue computing. Try AvoidOOM in you code to make the code continue to run when GPU memory runs out:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rsidet.utils</span> <span class="kn">import</span> <span class="n">AvoidCUDAOOM</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">AvoidCUDAOOM</span><span class="o">.</span><span class="n">retry_if_cuda_oom</span><span class="p">(</span><span class="n">some_function</span><span class="p">)(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also try <code class="docutils literal notranslate"><span class="pre">AvoidCUDAOOM</span></code> as a decorator to make the code continue to run when GPU memory runs out:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rsidet.utils</span> <span class="kn">import</span> <span class="n">AvoidCUDAOOM</span>
+
+<span class="nd">@AvoidCUDAOOM.retry_if_cuda_oom</span>
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">xxx</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>“RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one”</p>
+<ol class="arabic simple">
+<li><p>This error indicates that your module has parameters that were not used in producing loss. This phenomenon may be caused by running different branches in your code in DDP mode.</p></li>
+<li><p>You can set <code class="docutils literal notranslate"><span class="pre">find_unused_parameters</span> <span class="pre">=</span> <span class="pre">True</span></code> in the config to solve the above problems(but this will slow down the training speed.</p></li>
+<li><p>If the version of your MMCV &gt;= 1.4.1, you can get the name of those unused parameters with <code class="docutils literal notranslate"><span class="pre">detect_anomalous_params=True</span></code> in <code class="docutils literal notranslate"><span class="pre">optimizer_config</span></code> of config.</p></li>
+</ol>
+</li>
+<li><p>Save the best model</p>
+<p>It can be turned on by configuring <code class="docutils literal notranslate"><span class="pre">evaluation</span> <span class="pre">=</span> <span class="pre">dict(save_best=‘auto’)</span></code>. In the case of the <code class="docutils literal notranslate"><span class="pre">auto</span></code> parameter, the first key in the returned evaluation result will be used as the basis for selecting the best model. You can also directly set the key in the evaluation result to manually set it, for example, <code class="docutils literal notranslate"><span class="pre">evaluation</span> <span class="pre">=</span> <span class="pre">dict(save_best='mAP'</span> <span class="pre">)</span></code>.</p>
+</li>
+<li><p>Resume training with <code class="docutils literal notranslate"><span class="pre">ExpMomentumEMAHook</span></code></p>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">ExpMomentumEMAHook</span></code> in training, you can’t just use command line parameters  <code class="docutils literal notranslate"><span class="pre">--resume-from</span></code> nor <code class="docutils literal notranslate"><span class="pre">--cfg-options</span> <span class="pre">resume_from</span></code> to restore model parameters during resume, i.e., the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/train.py</span> <span class="pre">configs/yolox/yolox_s_8x8_300e_coco.py</span> <span class="pre">--resume-from</span> <span class="pre">./work_dir/yolox_s_8x8_300e_coco/epoch_x.pth</span></code> will not work. Since <code class="docutils literal notranslate"><span class="pre">ExpMomentumEMAHook</span></code> needs to reload the weights, taking the <code class="docutils literal notranslate"><span class="pre">yolox_s</span></code> algorithm as an example, you should modify the values of <code class="docutils literal notranslate"><span class="pre">resume_from</span></code> in two places of the config as below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open configs/yolox/yolox_s_8x8_300e_coco.py directly and modify all resume_from fields</span>
+<span class="n">resume_from</span><span class="o">=./</span><span class="n">work_dir</span><span class="o">/</span><span class="n">yolox_s_8x8_300e_coco</span><span class="o">/</span><span class="n">epoch_x</span><span class="o">.</span><span class="n">pth</span>
+<span class="n">custom_hooks</span><span class="o">=</span><span class="p">[</span><span class="o">...</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;ExpMomentumEMAHook&#39;</span><span class="p">,</span>
+        <span class="n">resume_from</span><span class="o">=./</span><span class="n">work_dir</span><span class="o">/</span><span class="n">yolox_s_8x8_300e_coco</span><span class="o">/</span><span class="n">epoch_x</span><span class="o">.</span><span class="n">pth</span><span class="p">,</span>
+        <span class="n">momentum</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>
+        <span class="n">priority</span><span class="o">=</span><span class="mi">49</span><span class="p">)</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>COCO Dataset, AP or AR = -1</p>
+<ol class="arabic simple">
+<li><p>According to the definition of COCO dataset, the small and medium areas in an image are less than 1024 (32*32), 9216 (96*96), respectively.</p></li>
+<li><p>If the corresponding area has no object, the result of AP and AR will set to -1.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code> in ResNet</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">style</span></code> parameter in ResNet allows either <code class="docutils literal notranslate"><span class="pre">pytorch</span></code> or <code class="docutils literal notranslate"><span class="pre">caffe</span></code> style. It indicates the difference in the Bottleneck module. Bottleneck is a stacking structure of <code class="docutils literal notranslate"><span class="pre">1x1-3x3-1x1</span></code> convolutional layers. In the case of <code class="docutils literal notranslate"><span class="pre">caffe</span></code> mode, the convolution layer with <code class="docutils literal notranslate"><span class="pre">stride=2</span></code> is the first <code class="docutils literal notranslate"><span class="pre">1x1</span></code> convolution, while in <code class="docutils literal notranslate"><span class="pre">pyorch</span></code> mode, it is the second <code class="docutils literal notranslate"><span class="pre">3x3</span></code> convolution has <code class="docutils literal notranslate"><span class="pre">stride=2</span></code>. A sample code is as below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span> <span class="o">==</span> <span class="s1">&#39;pytorch&#39;</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">conv1_stride</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">conv2_stride</span> <span class="o">=</span> <span class="n">stride</span>
+<span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">conv1_stride</span> <span class="o">=</span> <span class="n">stride</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">conv2_stride</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p>ResNeXt parameter description</p>
+<p>ResNeXt comes from the paper <a class="reference external" href="https://arxiv.org/abs/1611.05431"><code class="docutils literal notranslate"><span class="pre">Aggregated</span> <span class="pre">Residual</span> <span class="pre">Transformations</span> <span class="pre">for</span> <span class="pre">Deep</span> <span class="pre">Neural</span> <span class="pre">Networks</span></code></a>. It introduces  group and uses “cardinality” to control the number of groups to achieve a balance between accuracy and complexity. It controls the basic width and grouping parameters of the internal Bottleneck module through two hyperparameters <code class="docutils literal notranslate"><span class="pre">baseWidth</span></code> and <code class="docutils literal notranslate"><span class="pre">cardinality</span></code>. An example configuration name in MMDetection is <code class="docutils literal notranslate"><span class="pre">mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py</span></code>, where <code class="docutils literal notranslate"><span class="pre">mask_rcnn</span></code> represents the algorithm using Mask R-CNN, <code class="docutils literal notranslate"><span class="pre">x101</span></code> represents the backbone network using ResNeXt-101, and <code class="docutils literal notranslate"><span class="pre">64x4d</span></code> represents that the bottleneck block has 64 group and each group has basic width of 4.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">norm_eval</span></code> in backbone</p>
+<p>Since the detection model is usually large and the input image resolution is high, this will result in a small batch of the detection model, which will make the variance of the statistics calculated by BatchNorm during the training process very large and not as stable as the statistics obtained during the pre-training of the backbone network . Therefore, the <code class="docutils literal notranslate"><span class="pre">norm_eval=True</span></code> mode is generally used in training, and the BatchNorm statistics in the pre-trained backbone network are directly used. The few algorithms that use large batches are the <code class="docutils literal notranslate"><span class="pre">norm_eval=False</span></code> mode, such as NASFPN. For the backbone network without ImageNet pre-training and the batch is relatively small, you can consider using <code class="docutils literal notranslate"><span class="pre">SyncBN</span></code>.</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+              </article>
+              
+            </div>
+            <footer>
+  
+  <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+    
+    
+    <a href="changelog.html" class="btn btn-neutral" title="Changelog" accesskey="p"
+      rel="prev"><img src="_static/images/chevron-right-blue.svg" class="previous-page"> Previous</a>
+    
+  </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+      &copy; Copyright 2022, EarthNets.
+
+    </p>
+  </div>
+  
+  <div>
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+      href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the
+      Docs</a>.
+  </div>
+   
+
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Frequently Asked Questions</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#coding">Coding</a></li>
+<li><a class="reference internal" href="#pytorch-cuda-environment">PyTorch/CUDA Environment</a></li>
+<li><a class="reference internal" href="#training">Training</a></li>
+<li><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li><a class="reference internal" href="#model">Model</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" id="documentation_options" data-url_root="./"
+    src="_static/documentation_options.js"></script>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script src="_static/jquery.js"></script>
+  <script src="_static/underscore.js"></script>
+  <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+  <script src="_static/doctools.js"></script>
+  <script src="_static/clipboard.min.js"></script>
+  <script src="_static/copybutton.js"></script>
+  
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+    jQuery(function () {
+      SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+  </div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://rsi-detection.readthedocs.io/en/latest/" aria-label="OpenMMLab"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection/blob/main/demo/rsi_detection_tutorial.ipynb" target="_blank">Tutorial</a>
+          </li>
+          <li>
+            <a href="https://github.com/EarthNets/RSI-Detection" target="_blank">GitHub</a>
+          </li>
+          <li class="resources-mobile-menu-title" >
+            About
+          </li>
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://github.com/open-mmlab/mmcv" target="_blank">MMCV</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function (e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+
+</html>
