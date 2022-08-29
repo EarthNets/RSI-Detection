@@ -1,12 +1,9 @@
 
 ## Introduction
 
-MMDetection is an open source object detection toolbox based on PyTorch. It is
-a part of the [OpenMMLab](https://openmmlab.com/) project.
-
-The master branch works with **PyTorch 1.5+**.
-
-<img src="https://user-images.githubusercontent.com/12907710/137271636-56ba1cd2-b110-4812-8221-b4c120320aa9.png"/>
+<div  align="center">    
+ <img src="resources/DET.png" width = "400" height = "130" alt="segmentation" align=center />
+</div>
 
 <details open>
 <summary>Major features</summary>
