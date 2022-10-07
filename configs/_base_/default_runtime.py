@@ -1,21 +1,11 @@
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=20)
+evaluation = dict(interval=20, metric=['mAP'])
 # yapf:disable
-init_kwargs = {
-    'project': 'rsi-detection',
-    'entity': 'tum-tanmlh',
-}
 log_config = dict(
     interval=50,
     hooks=[
         dict(type='TextLoggerHook'),
         # dict(type='TensorboardLoggerHook')
-        dict(type='MMDetWandbHook',
-             init_kwargs={'project': 'mmdetection'},
-             interval=10,
-             log_checkpoint=True,
-             log_checkpoint_metadata=True,
-             num_eval_images=10,
-             bbox_score_thr=0.3)
     ])
 # yapf:enable
 custom_hooks = [dict(type='NumClassCheckHook')]

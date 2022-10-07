@@ -1,4 +1,4 @@
-_base_ = '../_base_/default_runtime.py'
+_base_ = ['../_base_/default_runtime.py', '../_base_/datasets/dior.py']
 # model settings
 model = dict(
     type='YOLOV3',
@@ -55,66 +55,7 @@ model = dict(
         conf_thr=0.005,
         nms=dict(type='nms', iou_threshold=0.45),
         max_per_img=100))
-# dataset settings
-dataset_type = 'EOXMLDataset'
-data_root = '../../Datasets/Dataset4EO'
-img_norm_cfg = dict(mean=[0, 0, 0], std=[255., 255., 255.], to_rgb=True)
-train_pipeline = [
-    dict(type='LoadImageFromFile', to_float32=True),
-    dict(type='LoadAnnotations', with_bbox=True),
-    dict(
-        type='Expand',
-        mean=img_norm_cfg['mean'],
-        to_rgb=img_norm_cfg['to_rgb'],
-        ratio_range=(1, 2)),
-    dict(
-        type='MinIoURandomCrop',
-        min_ious=(0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-        min_crop_size=0.3),
-    dict(type='Resize', img_scale=[(320, 320), (608, 608)], keep_ratio=True),
-    dict(type='RandomFlip', flip_ratio=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='Normalize', **img_norm_cfg),
-    dict(type='Pad', size_divisor=32),
-    dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels'])
-]
-test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(
-        type='MultiScaleFlipAug',
-        img_scale=(608, 608),
-        flip=False,
-        transforms=[
-            dict(type='Resize', keep_ratio=True),
-            dict(type='RandomFlip'),
-            dict(type='Normalize', **img_norm_cfg),
-            dict(type='Pad', size_divisor=32),
-            dict(type='ImageToTensor', keys=['img']),
-            dict(type='Collect', keys=['img'])
-        ])
-]
-data = dict(
-    samples_per_gpu=8,
-    workers_per_gpu=4,
-    train=dict(
-        type=dataset_type,
-        datapipe='DIOR',
-        data_root = data_root,
-        split='train',
-        pipeline=train_pipeline),
-    val=dict(
-        type=dataset_type,
-        datapipe='DIOR',
-        data_root = data_root,
-        split='train',
-        pipeline=test_pipeline),
-    test=dict(
-        type=dataset_type,
-        datapipe='DIOR',
-        data_root = data_root,
-        split='test',
-        pipeline=test_pipeline))
+
 # optimizer
 optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
@@ -127,9 +68,30 @@ lr_config = dict(
     step=[218, 246])
 # runtime settings
 runner = dict(type='EpochBasedRunner', max_epochs=273)
-evaluation = dict(interval=1, metric=['mAP'])
+evaluation = dict(interval=25, metric=['mAP'])
+checkpoint_config = dict(interval=25)
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (8 samples per GPU)
 auto_scale_lr = dict(base_batch_size=8)
+
+init_kwargs = {
+    'project': 'rsi-detection',
+    'entity': 'tum-tanmlh',
+    'name': 'yolov3_d53_mstrain-608_273e_dior',
+    'resume': 'never'
+}
+log_config = dict(
+    interval=50,
+    hooks=[
+        dict(type='TextLoggerHook'),
+        # dict(type='TensorboardLoggerHook')
+        dict(type='MMDetWandbHook',
+             init_kwargs=init_kwargs,
+             interval=10,
+             log_checkpoint=True,
+             log_checkpoint_metadata=True,
+             num_eval_images=30,
+             bbox_score_thr=0.3)
+    ])
