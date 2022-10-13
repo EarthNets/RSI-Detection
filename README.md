@@ -14,11 +14,6 @@ We follow the same design with MMDetection to enable a deep connection with the 
 
 Please see [get_started.md](docs/en/get_started.md) for the basic usage of MMDetection. We provide [colab tutorial](demo/MMDet_Tutorial.ipynb) and [instance segmentation colab tutorial](demo/MMDet_InstanceSeg_Tutorial.ipynb), and other tutorials for:
 
-- [with existing dataset](docs/en/1_exist_data_model.md)
-- [with new dataset](docs/en/2_new_data_model.md)
-- [with existing dataset_new_model](docs/en/3_exist_data_new_model.md)
-- [learn about configs](docs/en/tutorials/config.md)
-- [customize_datasets](docs/en/tutorials/customize_dataset.md)
 - [customize data pipelines](docs/en/tutorials/data_pipeline.md)
 - [customize_models](docs/en/tutorials/customize_models.md)
 - [customize runtime settings](docs/en/tutorials/customize_runtime.md)
