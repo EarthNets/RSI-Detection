@@ -66,5 +66,6 @@ log_config = dict(
              log_checkpoint=True,
              log_checkpoint_metadata=True,
              num_eval_images=30,
-             bbox_score_thr=0.3)
+             bbox_score_thr=0.3,
+             eval_after_run=True)
     ])

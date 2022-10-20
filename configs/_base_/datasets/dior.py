@@ -1,7 +1,8 @@
 # dataset settings
 
 dataset_type = 'EOXMLDataset'
-data_root = '../data/Dataset4EO'
+# data_root = '../data/Dataset4EO'
+data_root = '../../Datasets/Dataset4EO'
 image_size = (800, 800)
 crop_size = (608, 608)
 
@@ -71,7 +72,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=8,
+    samples_per_gpu=16,
     workers_per_gpu=8,
     train=dict(
         type=dataset_type,
@@ -83,7 +84,8 @@ data = dict(
         type=dataset_type,
         datapipe='DIOR',
         data_root = data_root,
-        split='val',
+        # split='val',
+        split='test_1k',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,

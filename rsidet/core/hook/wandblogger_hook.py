@@ -3,6 +3,7 @@ import importlib
 import os.path as osp
 import sys
 import warnings
+import pdb
 
 import mmcv
 import numpy as np
@@ -99,6 +100,7 @@ class MMDetWandbHook(WandbLoggerHook):
                  log_checkpoint_metadata=False,
                  num_eval_images=100,
                  bbox_score_thr=0.3,
+                 eval_after_run=False,
                  **kwargs):
         super(MMDetWandbHook, self).__init__(init_kwargs, interval, **kwargs)
 
@@ -110,6 +112,7 @@ class MMDetWandbHook(WandbLoggerHook):
         self.log_evaluation = (num_eval_images > 0)
         self.ckpt_hook: CheckpointHook = None
         self.eval_hook: EvalHook = None
+        self.eval_after_run = eval_after_run
 
     def import_wandb(self):
         try:
@@ -277,6 +280,15 @@ class MMDetWandbHook(WandbLoggerHook):
 
     @master_only
     def after_run(self, runner):
+        if self.eval_after_run:
+            from rsidet.apis import single_gpu_test
+            results = single_gpu_test(runner.model, self.eval_hook.dataloader, show=False)
+            self._init_pred_table()
+            # Log predictions
+            self._log_predictions(results)
+            # Log the table
+            self._log_eval_table(runner.epoch + 1)
+
         self.wandb.finish()
 
     def _update_wandb_config(self, runner):
