@@ -1,6 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import sys
 from inspect import signature
+import pdb
 
 import torch
 from mmcv.ops import batched_nms
@@ -162,6 +163,7 @@ class BBoxTestMixin(object):
             merge_aug_proposals(proposals, aug_img_meta, self.test_cfg)
             for proposals, aug_img_meta in zip(aug_proposals, aug_img_metas)
         ]
+
         return merged_proposals
 
     if sys.version_info >= (3, 7):

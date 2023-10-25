@@ -1,5 +1,6 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import os.path as osp
+import pdb
 
 import mmcv
 import numpy as np
@@ -266,7 +267,10 @@ class LoadAnnotations:
         if gt_bboxes_ignore is not None:
             results['gt_bboxes_ignore'] = gt_bboxes_ignore.copy()
             results['bbox_fields'].append('gt_bboxes_ignore')
+
+        # if results['gt_bboxes'].shape[0] > 0:
         results['bbox_fields'].append('gt_bboxes')
+
 
         gt_is_group_ofs = ann_info.get('gt_is_group_ofs', None)
         if gt_is_group_ofs is not None:

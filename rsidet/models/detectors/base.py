@@ -1,6 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from abc import ABCMeta, abstractmethod
 from collections import OrderedDict
+import pdb
 
 import mmcv
 import numpy as np
@@ -246,12 +247,49 @@ class BaseDetector(BaseModule, metaclass=ABCMeta):
                   averaging the logs.
         """
         losses = self(**data)
+        states = self._prepare_vis_state(losses)
         loss, log_vars = self._parse_losses(losses)
 
         outputs = dict(
-            loss=loss, log_vars=log_vars, num_samples=len(data['img_metas']))
+            loss=loss,
+            log_vars=log_vars,
+            num_samples=len(data['img_metas']),
+            states=states
+        )
 
         return outputs
+
+    def _prepare_vis_state(self, losses):
+
+        states = losses.pop('states') if 'states' in losses else None
+        if states is not None:
+            if 'else|img' in states:
+
+                if 'else|bbox_results' in states:
+                    bbox_results = states['else|bbox_results']
+                    # num_proposals_per_img = states['else|num_proposals_per_img']
+                    # bbox_results['cls_score'] = bbox_results['cls_score'].split(num_proposals_per_img)
+                    # bbox_results['bbox_pred'] = bbox_results['bbox_pred'].split(num_proposals_per_img)
+
+                    states['vis|dets'] = dict(
+                        img=states['else|img'],
+                        bbox_results=states['else|bbox_results']
+                    )
+
+                if 'else|proposals_pos' in states:
+                    states['vis|dets_proposals_pos'] = dict(
+                        img=states['else|img'],
+                        bbox_results=states['else|proposals_pos']
+                    )
+
+                if 'else|proposals_neg' in states:
+                    states['vis|dets_proposals_neg'] = dict(
+                        img=states['else|img'],
+                        bbox_results=states['else|proposals_neg']
+                    )
+
+        return states
+
 
     def val_step(self, data, optimizer=None):
         """The iteration step during validation.

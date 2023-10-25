@@ -11,7 +11,8 @@ def multiclass_nms(multi_bboxes,
                    nms_cfg,
                    max_num=-1,
                    score_factors=None,
-                   return_inds=False):
+                   return_inds=False,
+                   contain_bg=True):
     """NMS for multi-class bboxes.
 
     Args:
@@ -32,7 +33,7 @@ def multiclass_nms(multi_bboxes,
         tuple: (dets, labels, indices (optional)), tensors of shape (k, 5),
             (k), and (k). Dets are boxes with scores. Labels are 0-based.
     """
-    num_classes = multi_scores.size(1) - 1
+    num_classes = multi_scores.size(1) - 1 if contain_bg else multi_scores.size(1)
     # exclude background category
     if multi_bboxes.shape[1] > 4:
         bboxes = multi_bboxes.view(multi_scores.size(0), -1, 4)
@@ -40,7 +41,8 @@ def multiclass_nms(multi_bboxes,
         bboxes = multi_bboxes[:, None].expand(
             multi_scores.size(0), num_classes, 4)
 
-    scores = multi_scores[:, :-1]
+    scores = multi_scores[:, :-1] if contain_bg else multi_scores
+
 
     labels = torch.arange(num_classes, dtype=torch.long, device=scores.device)
     labels = labels.view(1, -1).expand_as(scores)

@@ -113,7 +113,7 @@ def roi2bbox(rois):
     return bbox_list
 
 
-def bbox2result(bboxes, labels, num_classes):
+def bbox2result(bboxes, labels=None, num_classes=0):
     """Convert detection results to a list of numpy arrays.
 
     Args:
@@ -129,7 +129,7 @@ def bbox2result(bboxes, labels, num_classes):
     else:
         if isinstance(bboxes, torch.Tensor):
             bboxes = bboxes.detach().cpu().numpy()
-            labels = labels.detach().cpu().numpy()
+            labels = labels.detach().cpu().numpy() if labels is not None else np.zeros(bboxes.shape[0])
         return [bboxes[labels == i, :] for i in range(num_classes)]
 
 

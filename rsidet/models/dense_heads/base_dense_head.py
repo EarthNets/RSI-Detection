@@ -1,5 +1,6 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from abc import ABCMeta, abstractmethod
+import pdb
 
 import torch
 from mmcv.cnn.utils.weight_init import constant_init
@@ -174,6 +175,7 @@ class BaseDenseHead(BaseModule, metaclass=ABCMeta):
             mlvl_score_factors = []
         else:
             mlvl_score_factors = None
+
         for level_idx, (cls_score, bbox_pred, score_factor, priors) in \
                 enumerate(zip(cls_score_list, bbox_pred_list,
                               score_factor_list, mlvl_priors)):

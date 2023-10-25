@@ -1,5 +1,6 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 from abc import ABCMeta, abstractmethod
+import pdb
 
 import torch
 
@@ -99,4 +100,5 @@ class BaseSampler(metaclass=ABCMeta):
 
         sampling_result = SamplingResult(pos_inds, neg_inds, bboxes, gt_bboxes,
                                          assign_result, gt_flags)
+
         return sampling_result

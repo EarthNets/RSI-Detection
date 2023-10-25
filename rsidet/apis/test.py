@@ -4,6 +4,7 @@ import pickle
 import shutil
 import tempfile
 import time
+import pdb
 
 import mmcv
 import torch
@@ -71,10 +72,13 @@ def single_gpu_test(model,
                 result[j]['ins_results'] = (bbox_results,
                                             encode_mask_results(mask_results))
 
+        # if type(result[0]) == dict:
+        #     result = [res['bbox_results'] for res in result]
         results.extend(result)
 
         for _ in range(batch_size):
             prog_bar.update()
+
     return results
 
 

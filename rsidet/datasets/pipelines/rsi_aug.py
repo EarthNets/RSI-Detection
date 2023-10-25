@@ -36,6 +36,8 @@ class RandomRotate90:
 
         h, w, c = results['img_shape']
         for key in results.get('bbox_fields', []):
+            if results[key].shape[-1] == 0:
+                continue
             min_x, min_y, max_x, max_y = np.split(
                 results[key], results[key].shape[-1], axis=-1)
             coordinates = np.stack([[min_x, min_y], [max_x, min_y],

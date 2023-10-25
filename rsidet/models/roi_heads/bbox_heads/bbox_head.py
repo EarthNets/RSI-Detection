@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from mmcv.runner import BaseModule, auto_fp16, force_fp32
 from torch.nn.modules.utils import _pair
+import pdb
 
 from rsidet.core import build_bbox_coder, multi_apply, multiclass_nms
 from rsidet.models.builder import HEADS, build_loss
@@ -352,6 +353,7 @@ class BBoxHead(BaseModule):
         else:
             scores = F.softmax(
                 cls_score, dim=-1) if cls_score is not None else None
+
         # bbox_pred would be None in some detector when with_reg is False,
         # e.g. Grid R-CNN.
         if bbox_pred is not None:

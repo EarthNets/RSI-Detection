@@ -56,7 +56,7 @@ class EOXMLDataset(EODataset):
             tree = ET.parse(xml_path)
             root = tree.getroot()
             size = root.find('size')
-            img = Image.open(filename)
+            # img = Image.open(filename)
             if size is not None:
                 width = int(size.find('width').text)
                 height = int(size.find('height').text)

@@ -304,6 +304,7 @@ class DeformableDETRHead(DETRHead):
         """
         cls_scores = all_cls_scores[-1]
         bbox_preds = all_bbox_preds[-1]
+        apply_nms = self.test_cfg.get('apply_nms', False)
 
         result_list = []
         for img_id in range(len(img_metas)):
@@ -313,6 +314,6 @@ class DeformableDETRHead(DETRHead):
             scale_factor = img_metas[img_id]['scale_factor']
             proposals = self._get_bboxes_single(cls_score, bbox_pred,
                                                 img_shape, scale_factor,
-                                                rescale)
+                                                rescale, apply_nms)
             result_list.append(proposals)
         return result_list

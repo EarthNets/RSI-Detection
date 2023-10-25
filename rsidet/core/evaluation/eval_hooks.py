@@ -1,6 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import bisect
 import os.path as osp
+import pdb
 
 import mmcv
 import torch.distributed as dist
@@ -60,7 +61,11 @@ class EvalHook(BaseEvalHook):
         results = single_gpu_test(runner.model, self.dataloader, show=False)
         self.latest_results = results
         runner.log_buffer.output['eval_iter_num'] = len(self.dataloader)
-        key_score = self.evaluate(runner, results)
+
+        eval_results = results
+        if type(results[0]) == dict:
+            eval_results = [result['bbox_results'] for result in results]
+        key_score = self.evaluate(runner, eval_results)
         # the key_score may be `None` so it needs to skip the action to save
         # the best checkpoint
         if self.save_best and key_score:

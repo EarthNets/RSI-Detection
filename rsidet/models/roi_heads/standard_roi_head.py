@@ -1,5 +1,7 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch
+import pdb
+import numpy as np
 
 from rsidet.core import bbox2result, bbox2roi, build_assigner, build_sampler
 from ..builder import HEADS, build_head, build_roi_extractor
@@ -220,6 +222,52 @@ class StandardRoIHead(BaseRoIHead, BBoxTestMixin, MaskTestMixin):
                 mask_test_cfg=self.test_cfg.get('mask'))
             return bbox_results, segm_results
 
+    # def simple_test(self,
+    #                 x,
+    #                 proposal_list,
+    #                 img_metas,
+    #                 proposals=None,
+    #                 rescale=False):
+    #     """Test without augmentation.
+
+    #     Args:
+    #         x (tuple[Tensor]): Features from upstream network. Each
+    #             has shape (batch_size, c, h, w).
+    #         proposal_list (list(Tensor)): Proposals from rpn head.
+    #             Each has shape (num_proposals, 5), last dimension
+    #             5 represent (x1, y1, x2, y2, score).
+    #         img_metas (list[dict]): Meta information of images.
+    #         rescale (bool): Whether to rescale the results to
+    #             the original image. Default: True.
+
+    #     Returns:
+    #         list[list[np.ndarray]] or list[tuple]: When no mask branch,
+    #         it is bbox results of each image and classes with type
+    #         `list[list[np.ndarray]]`. The outer list
+    #         corresponds to each image. The inner list
+    #         corresponds to each class. When the model has mask branch,
+    #         it contains bbox results and mask results.
+    #         The outer list corresponds to each image, and first element
+    #         of tuple is bbox results, second element is mask results.
+    #     """
+    #     assert self.with_bbox, 'Bbox head must be implemented.'
+
+    #     det_bboxes, det_labels = self.simple_test_bboxes(
+    #         x, img_metas, proposal_list, self.test_cfg, rescale=rescale)
+
+    #     bbox_results = [
+    #         bbox2result(det_bboxes[i], det_labels[i],
+    #                     self.bbox_head.num_classes)
+    #         for i in range(len(det_bboxes))
+    #     ]
+
+    #     if not self.with_mask:
+    #         return bbox_results
+    #     else:
+    #         segm_results = self.simple_test_mask(
+    #             x, img_metas, det_bboxes, det_labels, rescale=rescale)
+    #         return list(zip(bbox_results, segm_results))
+
     def simple_test(self,
                     x,
                     proposal_list,
@@ -259,12 +307,34 @@ class StandardRoIHead(BaseRoIHead, BBoxTestMixin, MaskTestMixin):
             for i in range(len(det_bboxes))
         ]
 
-        if not self.with_mask:
-            return bbox_results
+        return_proposals = self.test_cfg.get('return_proposals', True)
+        num_display_proposals = self.test_cfg.get('num_display_proposals', 64)
+        if return_proposals:
+            display_proposal_list = [proposal[:num_display_proposals] for proposal in proposal_list]
+            proposal_bboxes, proposal_labels = self.decode_proposals(
+                img_metas, display_proposal_list, None, rescale=rescale,
+            )
+
+            proposal_results = [
+                bbox2result(proposal_bboxes[i], proposal_labels[i], 2)
+                for i in range(len(proposal_bboxes))
+            ]
+
+            result_list = []
+            for bbox, proposal, display_proposal in zip(bbox_results, proposal_results, display_proposal_list):
+                proposal_bboxes, proposal_label = proposal
+                probs = display_proposal[:, -1:].cpu().numpy()
+                proposal_bboxes = np.concatenate([proposal_bboxes, probs], axis=-1)
+                proposal_label = np.array([0]).repeat(proposal_bboxes.shape[0])
+
+                results = {}
+                results['bbox_results'] = bbox
+                results['proposal_results'] = [proposal_bboxes, proposal_bboxes[[], :]]
+                result_list.append(results)
+
+            return result_list
         else:
-            segm_results = self.simple_test_mask(
-                x, img_metas, det_bboxes, det_labels, rescale=rescale)
-            return list(zip(bbox_results, segm_results))
+            return bbox_results
 
     def aug_test(self, x, proposal_list, img_metas, rescale=False):
         """Test with augmentations.
@@ -283,6 +353,34 @@ class StandardRoIHead(BaseRoIHead, BBoxTestMixin, MaskTestMixin):
                 img_metas[0][0]['scale_factor'])
         bbox_results = bbox2result(_det_bboxes, det_labels,
                                    self.bbox_head.num_classes)
+        bbox_results = [bbox_results]
+
+        return_proposals = self.test_cfg.get('return_proposals', False)
+        num_display_proposals = self.test_cfg.get('num_display_proposals', 64)
+        if return_proposals:
+            display_proposal_list = [proposal[:num_display_proposals] for proposal in proposal_list]
+            proposal_bboxes, proposal_labels = self.decode_proposals(
+                img_metas[0], display_proposal_list, None, rescale=rescale,
+            )
+
+            proposal_results = [
+                bbox2result(proposal_bboxes[i], proposal_labels[i], 2)
+                for i in range(len(proposal_bboxes))
+            ]
+
+            result_list = []
+            for bbox, proposal, display_proposal in zip(bbox_results, proposal_results, display_proposal_list):
+                proposal_bboxes, proposal_label = proposal
+                probs = display_proposal[:, -1:].cpu().numpy()
+                proposal_bboxes = np.concatenate([proposal_bboxes, probs], axis=-1)
+                proposal_label = np.array([0]).repeat(proposal_bboxes.shape[0])
+
+                results = {}
+                results['bbox_results'] = bbox
+                results['proposal_results'] = [proposal_bboxes, proposal_bboxes[[], :]]
+                result_list.append(results)
+
+            return result_list
 
         # det_bboxes always keep the original scale
         if self.with_mask:
@@ -290,7 +388,8 @@ class StandardRoIHead(BaseRoIHead, BBoxTestMixin, MaskTestMixin):
                                               det_labels)
             return [(bbox_results, segm_results)]
         else:
-            return [bbox_results]
+            # return [bbox_results]
+            return bbox_results
 
     def onnx_export(self, x, proposals, img_metas, rescale=False):
         """Test without augmentation."""

@@ -6,6 +6,7 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import pdb
 
 
 def cal_train_time(log_dicts, args):
@@ -21,6 +22,7 @@ def cal_train_time(log_dicts, args):
             raise KeyError(
                 'Please reduce the log interval in the config so that'
                 'interval is less than iterations of one epoch.')
+        pdb.set_trace()
         all_times = np.array(all_times)
         epoch_ave_time = all_times.mean(-1)
         slowest_epoch = epoch_ave_time.argmax()

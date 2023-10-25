@@ -1,4 +1,5 @@
 # Copyright (c) OpenMMLab. All rights reserved.
+import pdb
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -8,7 +9,7 @@ from mmcv.runner import force_fp32
 
 from rsidet.core import (bbox_cxcywh_to_xyxy, bbox_xyxy_to_cxcywh,
                         build_assigner, build_sampler, multi_apply,
-                        reduce_mean)
+                        reduce_mean, multiclass_nms)
 from rsidet.models.utils import build_transformer
 from ..builder import HEADS, build_loss
 from .anchor_free_head import AnchorFreeHead
@@ -120,6 +121,7 @@ class DETRHead(AnchorFreeHead):
             # DETR sampling=False, so use PseudoSampler
             sampler_cfg = dict(type='PseudoSampler')
             self.sampler = build_sampler(sampler_cfg, context=self)
+
         self.num_query = num_query
         self.num_classes = num_classes
         self.in_channels = in_channels
@@ -630,7 +632,8 @@ class DETRHead(AnchorFreeHead):
                            bbox_pred,
                            img_shape,
                            scale_factor,
-                           rescale=False):
+                           rescale=False,
+                           apply_nms=False):
         """Transform outputs from the last decoder layer into bbox predictions
         for each image.
 
@@ -676,9 +679,22 @@ class DETRHead(AnchorFreeHead):
         det_bboxes[:, 1::2] = det_bboxes[:, 1::2] * img_shape[0]
         det_bboxes[:, 0::2].clamp_(min=0, max=img_shape[1])
         det_bboxes[:, 1::2].clamp_(min=0, max=img_shape[0])
-        if rescale:
+
+        if apply_nms:
+            nms_scores = cls_score[bbox_index]
+            det_bboxes, det_labels = multiclass_nms(
+                det_bboxes,
+                nms_scores,
+                self.test_cfg.score_thr,
+                self.test_cfg.nms,
+                self.test_cfg.max_per_img,
+                score_factors=None,
+                contain_bg=False
+            )
+            det_bboxes[:, :4] /= det_bboxes[:, :4].new_tensor(scale_factor)
+        else:
             det_bboxes /= det_bboxes.new_tensor(scale_factor)
-        det_bboxes = torch.cat((det_bboxes, scores.unsqueeze(1)), -1)
+            det_bboxes = torch.cat((det_bboxes, scores.unsqueeze(1)), -1)
 
         return det_bboxes, det_labels
 
